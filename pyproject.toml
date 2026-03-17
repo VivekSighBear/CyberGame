@@ -1,0 +1,18 @@
+[project]
+name = "hackersshoe"
+version = "0.1.0"
+description = "Cybersecurity game built with Streamlit"
+authors = [
+    { name = "Vivek Singh" }
+]
+readme = "README.md"
+requires-python = ">=3.10,<3.14"
+dependencies = []
+
+# Use Poetry only for dependency management (not packaging)
+package-mode = false
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"

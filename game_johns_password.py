@@ -2,18 +2,19 @@ import streamlit as st
 
 def render_game() -> None:
     """Render the Password Cracking Game page with 5 levels of hints about John."""
-    
-    st.set_page_config(
-        page_title="Crack John's Password - Cybersecurity Game",
-        page_icon="🎮",
-        layout="wide",
-        initial_sidebar_state="expanded"
-    )
+
+    # Back to hub (only works when launched from main.py)
+    top_left, _, _ = st.columns([2, 6, 2])
+    with top_left:
+        if st.button("← Back to main menu", use_container_width=True, key="back_to_main_menu"):
+            st.session_state.current_page = "landing"
+            st.session_state.selected_game = None
+            st.rerun()
 
     # Custom CSS: cyber-game theme (neon + grid + glow)
     custom_css = """
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=JetBrains+Mono:wght@400;600&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=JetBrains+Mono:wght@400;600&family=Share+Tech+Mono&display=swap');
 
         :root{
             --bg0:#050815;
@@ -122,6 +123,38 @@ def render_game() -> None:
         header { visibility: hidden; }
         /* Some themes keep reserved top padding; remove it */
         .stApp { padding-top: 0rem; }
+
+        /* Global button system: outlined neon buttons (hub + games) */
+        .stButton > button{
+            width: 100%;
+            background: rgba(15,23,42,.92) !important;
+            color: var(--cyan) !important;
+            border: 1px solid rgba(34,211,238,.70) !important;
+            border-radius: 12px !important;
+            padding: 0.9rem 1rem !important;
+            font-family: 'Orbitron', system-ui, sans-serif !important;
+            font-weight: 800 !important;
+            letter-spacing: .06em !important;
+            text-transform: uppercase !important;
+            box-shadow: 0 14px 34px rgba(0,0,0,.40), 0 0 16px rgba(34,211,238,.18) !important;
+            transition: transform .16s ease, box-shadow .16s ease, background .16s ease, border-color .16s ease !important;
+        }
+        .stButton > button:hover{
+            transform: translateY(-2px) scale(1.01) !important;
+            background: linear-gradient(135deg, rgba(15,23,42,1), rgba(8,47,73,1)) !important;
+            border-color: rgba(56,189,248,.95) !important;
+            box-shadow: 0 20px 46px rgba(0,0,0,.55), 0 0 22px rgba(34,211,238,.35), 0 0 18px rgba(168,85,247,.16) !important;
+        }
+        .stButton > button:active{
+            transform: translateY(0px) scale(.995) !important;
+        }
+        .stButton > button:disabled,
+        .stButton > button[disabled]{
+            opacity: .55 !important;
+            cursor: not-allowed !important;
+            box-shadow: none !important;
+            transform: none !important;
+        }
 
         /* Section spacing helpers */
         .section-gap-lg{ height: 26px; }
@@ -288,6 +321,8 @@ def render_game() -> None:
             color: var(--cyan);
             font-weight: bold;
             text-shadow: 0 0 14px rgba(34,211,238,.18);
+            font-family: 'Share Tech Mono', 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+            letter-spacing: .02em;
         }
 
         /* Main hints container (make hints the focus) */
@@ -337,9 +372,72 @@ def render_game() -> None:
             font-size: 24px;
             color: rgba(167,243,255,.98);
             text-shadow: 0 0 18px rgba(34,211,238,.20);
+            font-family: 'Share Tech Mono', 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+            letter-spacing: .02em;
         }
         .hint-card.primary .hint-title{
             color: rgba(215,227,255,.85);
+        }
+
+        /* Social-media style quote panel (Level 2) */
+        .quote-card{
+            background: linear-gradient(180deg, rgba(14,26,43,.92), rgba(14,26,43,.62));
+            border: 1px solid rgba(168,85,247,.34);
+            outline: 1px solid rgba(34,211,238,.14);
+            border-radius: 14px;
+            padding: 22px 18px;
+            box-shadow: 0 18px 55px rgba(0,0,0,.34), 0 0 26px rgba(168,85,247,.12);
+            position: relative;
+            overflow: hidden;
+        }
+        .quote-card::before{
+            content:"";
+            position:absolute;
+            inset:-2px;
+            background: conic-gradient(from 180deg, rgba(168,85,247,.0), rgba(168,85,247,.35), rgba(34,211,238,.18), rgba(168,85,247,.0));
+            opacity:.28;
+            filter: blur(14px);
+        }
+        .quote-card > *{ position: relative; }
+        .quote-header{
+            display:flex;
+            align-items:center;
+            gap:10px;
+            margin: 0 0 12px 0;
+            opacity: .95;
+        }
+        .quote-avatar{
+            width: 34px;
+            height: 34px;
+            border-radius: 999px;
+            background: radial-gradient(circle at 30% 30%, rgba(34,211,238,.55), rgba(168,85,247,.35));
+            border: 1px solid rgba(34,211,238,.22);
+            box-shadow: 0 10px 22px rgba(0,0,0,.35), 0 0 18px rgba(34,211,238,.12);
+        }
+        .quote-handle{
+            font-family: 'Share Tech Mono', 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+            letter-spacing: .04em;
+            color: rgba(215,227,255,.88);
+            font-size: 12px;
+            text-transform: uppercase;
+        }
+        .quote-line{
+            font-family: 'Share Tech Mono', 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+            font-size: 20px;
+            line-height: 1.55;
+            color: rgba(167,243,255,.96);
+            text-shadow: 0 0 16px rgba(34,211,238,.14);
+            padding: 12px 12px;
+            margin: 10px 0;
+            border-radius: 12px;
+            border: 1px dashed rgba(34,211,238,.20);
+            background: rgba(34,211,238,.05);
+        }
+        .quote-meta{
+            margin-top: 10px;
+            font-size: 12px;
+            color: rgba(142,163,209,.92);
+            opacity: .95;
         }
 
         /* One big container around all hints */
@@ -1021,11 +1119,11 @@ def render_game() -> None:
     level_col1, level_col2, level_col3, level_col4, level_col5 = st.columns(5)
     
     levels = [
-        {"num": 1, "title": "Basic Info", "status": "Easy"},
-        {"num": 2, "title": "Personal Details", "status": "Getting Warmer"},
-        {"num": 3, "title": "Hidden Clues", "status": "Medium"},
-        {"num": 4, "title": "Pattern Recognition", "status": "Hard"},
-        {"num": 5, "title": "Final Challenge", "status": "Expert"}
+        {"num": 1, "title": "Default Password", "status": "Easy"},
+        {"num": 2, "title": "Social Media Clues", "status": "Getting Warmer"},
+        {"num": 3, "title": "Birthday Leak", "status": "Medium"},
+        {"num": 4, "title": "Music Obsession", "status": "Hard"},
+        {"num": 5, "title": "Password Manager", "status": "Expert"}
     ]
     
     columns = [level_col1, level_col2, level_col3, level_col4, level_col5]
@@ -1053,67 +1151,227 @@ def render_game() -> None:
         # Hints based on current level
         hints = {
             1: [
-                {"title": "BASIC FACT #1", "content": "John is a cybersecurity professional"},
-                {"title": "BASIC FACT #2", "content": "He was born in 1990"},
-                {"title": "BASIC FACT #3", "content": "His favorite color is blue"}
+                {
+                    "title": "Default Password",
+                    "content": "John just set up a brand-new Wi-Fi router at home. Excited to get online, he rushed through the setup, clicked “Next” on every step, and left everything exactly as it was—including the admin login. The internet worked, Netflix streamed, and life moved on… but behind the scenes, his network sat wide open.\n\nWhat John ignored, an attacker looks for first.\nWhat he left unchanged is no longer just a setting… it’s an opportunity.\n\nNow his mistake is your treasure. Can you guess the admin password? 🔐"
+                }
             ],
             2: [
-                {"title": "PERSONAL #1", "content": "John's first pet was a dog named 'Rex'"},
-                {"title": "PERSONAL #2", "content": "He graduated college in 2012"},
-                {"title": "PERSONAL #3", "content": "His mother's name is 'Mary'"}
+                {
+                    "title": "Oversharing on Social Media",
+                    "content": "John loves sharing moments from his life online, but there’s one thing he talks about more than anything else—his dog. Scroll through his profile and you’ll see it everywhere: pictures, stories, captions full of love and pride.\nTo John, it’s just harmless posts. But to someone watching closely, it’s a pattern… a clue hiding in plain sight. The name he repeats, the emotion he attaches, the habit of adding simple numbers—everything starts forming a predictable secret.\n\nWhat John shared with the world has now become your advantage. Can you guess his password? 🔐",
+                    "quotes": [
+                        "“Rocky having a cute moment with me ❤️🐶”",
+                        "“Happy birthday Rocky 🎉”",
+                        "“Rocky is my whole world ❤️”",
+                        "“Best day ever with Rocky 🐾”"
+                    ]
+                }
             ],
             3: [
-                {"title": "HIDDEN CLUE #1", "content": "John's favorite number is the year he was born"},
-                {"title": "HIDDEN CLUE #2", "content": "He uses a combination of letters and numbers"},
-                {"title": "HIDDEN CLUE #3", "content": "The password is 8 characters long"}
+                {
+                    "title": "Birthday Post = Data Leak",
+                    "content": "John recently celebrated his birthday and, like always, shared the moment online with friends and followers. In the excitement, he didn’t just post pictures—he revealed just enough information without realizing it. A simple birthday post, a mention of his age, and the exact date of celebration… small details that seem harmless on their own. But when combined, they start telling a bigger story—one that an attacker can piece together to uncover something far more sensitive.",
+                    "caption": "“Finally turned 26 today! 🎉🥳 Feeling grateful for everything ❤️”",
+                    "posted": "12th March",
+                    "age": "26"
+                }
             ],
             4: [
-                {"title": "PATTERN #1", "content": "John likes to capitalize the first letter"},
-                {"title": "PATTERN #2", "content": "He replaces 'a' with '@' in his passwords"},
-                {"title": "PATTERN #3", "content": "The year '1990' appears in his passwords often"}
+                {
+                    "title": "Music Clue: Album + Year",
+                    "content": "John has always been passionate about music, but recently he’s been obsessing over one particular artist. His feed is filled with posts about songs, lyrics, and admiration for what he calls the greatest album he has ever heard. In one post, he finally gives away more than he realizes—mentioning both the album and a key achievement tied to it. It may look like just another fan moment, but for someone paying attention, it’s the missing piece needed to uncover his password.\n\nHint: password is combination of alphabets, one special character and 4 numbers\n\nNow connect the dots… can you guess his password? 🔐",
+                    "caption": "“I love this Eminem album the most ❤️🔥 He even won a Grammy for this in 2011! 🏆🎧”"
+                }
             ],
             5: [
-                {"title": "FINAL CLUE #1", "content": "Password format: [Name][Symbol][Year]"},
-                {"title": "FINAL CLUE #2", "content": "He uses his nickname 'Johnny'"},
-                {"title": "FINAL CLUE #3", "content": "The symbol is usually '!' or '@'"}
+                {
+                    "title": "No More Clues",
+                    "content": "After a series of close calls and realizing how easily his passwords could be guessed, John finally understood the risk he had been taking. Each time his patterns were uncovered, it became clear that using personal information was no longer safe. Determined to fix this, he completely changed his approach. Instead of relying on memory or habits, he switched to using a password manager that generates strong, random passwords with no connection to his personal life. Now, there are no clues, no patterns, and nothing to trace back.\n\nThis time, there are no hints to rely on. Can you still crack it? 🔐",
+                    "caption": "“Time to level up my security 🔐 No more easy passwords… using a password manager now!”"
+                }
             ]
         }
         
         current_hints = hints[st.session_state.current_level]
         
-        st.markdown(
-            f"""
-            <div class='hints-master tier-secondary'>
-              <div class='hints-master-title'>PRIMARY INTEL // LEVEL {st.session_state.current_level}</div>
-              <div class='hints-master-level'>LEVEL {st.session_state.current_level}</div>
-              <div class='hints-master-sub'></div>
-              <div class='hints-master-sub'></div>
-              <div class='hints-grid'>
-                <div class='hint-card primary'>
-                  <div class='hint-title'>{current_hints[0]['title']}</div>
-                  <div class='hint-content'>{current_hints[0]['content']}</div>
+        if st.session_state.current_level == 1:
+            level1_story_html = current_hints[0]["content"].replace("\n", "<br/>")
+            st.markdown(
+                f"""
+                <div class='hints-master tier-secondary'>
+                  <div class='hints-master-title'>PRIMARY INTEL // LEVEL {st.session_state.current_level}</div>
+                  <div class='hints-master-level'>LEVEL {st.session_state.current_level}</div>
+                  <div class='hints-master-sub'>Mission briefing</div>
+                  <div class='hints-grid'>
+                    <div class='hint-card primary' style='grid-column: 1 / -1;'>
+                      <div class='hint-title'>{current_hints[0]['title']}</div>
+                      <div class='hint-content' style='font-size: 18px; line-height: 1.75; font-weight: 650; text-align: left;'>
+                        {level1_story_html}
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <div class='hint-card primary'>
-                  <div class='hint-title'>{current_hints[1]['title']}</div>
-                  <div class='hint-content'>{current_hints[1]['content']}</div>
+                """,
+                unsafe_allow_html=True,
+            )
+        elif st.session_state.current_level == 2:
+            level2_story_html = current_hints[0]["content"].replace("\n", "<br/>")
+            level2_quotes = current_hints[0].get("quotes", [])
+            quotes_html = "\n".join([f"<div class='quote-line'>{q}</div>" for q in level2_quotes])
+
+            st.markdown(
+                f"""
+                <div class='hints-master tier-secondary'>
+                  <div class='hints-master-title'>PRIMARY INTEL // LEVEL {st.session_state.current_level}</div>
+                  <div class='hints-master-level'>LEVEL {st.session_state.current_level}</div>
+                  <div class='hints-master-sub'>Social footprint analysis</div>
+                  <div class='hints-grid'>
+                    <div class='hint-card primary' style='grid-column: 1 / span 2;'>
+                      <div class='hint-title'>{current_hints[0]['title']}</div>
+                      <div class='hint-content' style='font-size: 18px; line-height: 1.75; font-weight: 650; text-align: left;'>
+                        {level2_story_html}
+                      </div>
+                    </div>
+                    <div class='quote-card' style='grid-column: 3 / 4;'>
+                      <div class='quote-header'>
+                        <div class='quote-avatar'></div>
+                        <div class='quote-handle'>@johns_profile // captions</div>
+                      </div>
+                      {quotes_html}
+                      <div class='quote-meta'>Pattern: repeated name + emotion + simple numbers</div>
+                    </div>
+                  </div>
                 </div>
-                <div class='hint-card primary'>
-                  <div class='hint-title'>{current_hints[2]['title']}</div>
-                  <div class='hint-content'>{current_hints[2]['content']}</div>
+                """,
+                unsafe_allow_html=True,
+            )
+        elif st.session_state.current_level == 3:
+            level3_story_html = current_hints[0]["content"].replace("\n", "<br/>")
+            level3_caption = current_hints[0].get("caption", "")
+            level3_posted = current_hints[0].get("posted", "")
+            level3_age = current_hints[0].get("age", "")
+
+            st.markdown(
+                f"""
+                <div class='hints-master tier-secondary'>
+                  <div class='hints-master-title'>PRIMARY INTEL // LEVEL {st.session_state.current_level}</div>
+                  <div class='hints-master-level'>LEVEL {st.session_state.current_level}</div>
+                  <div class='hints-master-sub'>Timeline correlation</div>
+                  <div class='hints-grid'>
+                    <div class='hint-card primary' style='grid-column: 1 / span 2;'>
+                      <div class='hint-title'>{current_hints[0]['title']}</div>
+                      <div class='hint-content' style='font-size: 18px; line-height: 1.75; font-weight: 650; text-align: left;'>
+                        {level3_story_html}
+                      </div>
+                    </div>
+                    <div class='quote-card' style='grid-column: 3 / 4;'>
+                      <div class='quote-header'>
+                        <div class='quote-avatar'></div>
+                        <div class='quote-handle'>@johns_profile // birthday post</div>
+                      </div>
+                      <div class='quote-line'>{level3_caption}</div>
+                      <div class='quote-meta'>Posted: {level3_posted} · Age: {level3_age}</div>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
-            """,
-            unsafe_allow_html=True,
-        )
+                """,
+                unsafe_allow_html=True,
+            )
+        elif st.session_state.current_level == 4:
+            level4_story_html = current_hints[0]["content"].replace("\n", "<br/>")
+            level4_caption = current_hints[0].get("caption", "")
+
+            st.markdown(
+                f"""
+                <div class='hints-master tier-secondary'>
+                  <div class='hints-master-title'>PRIMARY INTEL // LEVEL {st.session_state.current_level}</div>
+                  <div class='hints-master-level'>LEVEL {st.session_state.current_level}</div>
+                  <div class='hints-master-sub'>Open-source intelligence</div>
+                  <div class='hints-grid'>
+                    <div class='hint-card primary' style='grid-column: 1 / span 2;'>
+                      <div class='hint-title'>{current_hints[0]['title']}</div>
+                      <div class='hint-content' style='font-size: 18px; line-height: 1.75; font-weight: 650; text-align: left;'>
+                        {level4_story_html}
+                      </div>
+                    </div>
+                    <div class='quote-card' style='grid-column: 3 / 4;'>
+                      <div class='quote-header'>
+                        <div class='quote-avatar'></div>
+                        <div class='quote-handle'>@johns_profile // music post</div>
+                      </div>
+                      <div class='quote-line'>{level4_caption}</div>
+                      <div class='quote-meta'>Clue: album name + special char + year</div>
+                    </div>
+                  </div>
+                </div>
+                """,
+                unsafe_allow_html=True,
+            )
+        elif st.session_state.current_level == 5:
+            level5_story_html = current_hints[0]["content"].replace("\n", "<br/>")
+            level5_caption = current_hints[0].get("caption", "")
+
+            st.markdown(
+                f"""
+                <div class='hints-master tier-secondary'>
+                  <div class='hints-master-title'>PRIMARY INTEL // LEVEL {st.session_state.current_level}</div>
+                  <div class='hints-master-level'>LEVEL {st.session_state.current_level}</div>
+                  <div class='hints-master-sub'>Zero-signal challenge</div>
+                  <div class='hints-grid'>
+                    <div class='hint-card primary' style='grid-column: 1 / span 2;'>
+                      <div class='hint-title'>{current_hints[0]['title']}</div>
+                      <div class='hint-content' style='font-size: 18px; line-height: 1.75; font-weight: 650; text-align: left;'>
+                        {level5_story_html}
+                      </div>
+                    </div>
+                    <div class='quote-card' style='grid-column: 3 / 4;'>
+                      <div class='quote-header'>
+                        <div class='quote-avatar'></div>
+                        <div class='quote-handle'>@johns_profile // security update</div>
+                      </div>
+                      <div class='quote-line'>{level5_caption}</div>
+                      <div class='quote-meta'>No patterns. No personal data. Pure randomness.</div>
+                    </div>
+                  </div>
+                </div>
+                """,
+                unsafe_allow_html=True,
+            )
+        else:
+            st.markdown(
+                f"""
+                <div class='hints-master tier-secondary'>
+                  <div class='hints-master-title'>PRIMARY INTEL // LEVEL {st.session_state.current_level}</div>
+                  <div class='hints-master-level'>LEVEL {st.session_state.current_level}</div>
+                  <div class='hints-master-sub'></div>
+                  <div class='hints-master-sub'></div>
+                  <div class='hints-grid'>
+                    <div class='hint-card primary'>
+                      <div class='hint-title'>{current_hints[0]['title']}</div>
+                      <div class='hint-content'>{current_hints[0]['content']}</div>
+                    </div>
+                    <div class='hint-card primary'>
+                      <div class='hint-title'>{current_hints[1]['title']}</div>
+                      <div class='hint-content'>{current_hints[1]['content']}</div>
+                    </div>
+                    <div class='hint-card primary'>
+                      <div class='hint-title'>{current_hints[2]['title']}</div>
+                      <div class='hint-content'>{current_hints[2]['content']}</div>
+                    </div>
+                  </div>
+                </div>
+                """,
+                unsafe_allow_html=True,
+            )
 
         # Correct passwords for each level (for demo purposes)
         correct_passwords = {
-            1: "cybersecurity",
-            2: "Rex2012",
-            3: "John1990",
-            4: "J@hn1990",
-            5: "Johnny@1990"
+            1: "admin",
+            2: "Rocky123",
+            3: "John12032000",
+            4: "Recovery@2011",
+            5: "G7#kP2!vQ9$xL"
         }
 
         # Password input row (immediately after hints)

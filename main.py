@@ -494,7 +494,7 @@ def render_landing_content():
     st.markdown("""
     <div class="footer">
         <p>Developed by Sighbear Technology Private Limited</p>
-        <p style="font-size: 0.8rem; margin-top: 1rem;">© 2024 All rights reserved</p>
+        
     </div>
     """, unsafe_allow_html=True)
 

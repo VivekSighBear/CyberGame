@@ -1120,10 +1120,10 @@ def render_game() -> None:
     
     levels = [
         {"num": 1, "title": "Default Password", "status": "Easy"},
-        {"num": 2, "title": "Social Media Clues", "status": "Getting Warmer"},
-        {"num": 3, "title": "Birthday Leak", "status": "Medium"},
-        {"num": 4, "title": "Music Obsession", "status": "Hard"},
-        {"num": 5, "title": "Password Manager", "status": "Expert"}
+        {"num": 2, "title": "Open Source Intelligence", "status": "Getting Warmer"},
+        {"num": 3, "title": "Open Source Intelligence", "status": "Medium"},
+        {"num": 4, "title": "Open Source Intelligence", "status": "Hard"},
+        {"num": 5, "title": "You can't Guess It", "status": "Expert"}
     ]
     
     columns = [level_col1, level_col2, level_col3, level_col4, level_col5]

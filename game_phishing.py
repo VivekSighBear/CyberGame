@@ -827,6 +827,219 @@ def render_game() -> None:
             color: rgba(167,243,255,.92);
             line-height: 1.5;
         }
+
+        /* Mobile Responsive Design */
+        @media (max-width: 768px) {
+            /* Header adjustments */
+            .phish-hud-header {
+                padding: 20px 15px !important;
+                margin-bottom: 20px !important;
+            }
+            .phish-title-main {
+                font-size: 24px !important;
+                line-height: 1.2 !important;
+            }
+            .phish-hud-sub {
+                font-size: 14px !important;
+                line-height: 1.4 !important;
+            }
+
+            /* Progress cards */
+            .progress-card.compact {
+                padding: 12px 10px !important;
+                margin-bottom: 10px !important;
+            }
+            .progress-label {
+                font-size: 11px !important;
+            }
+            .progress-value {
+                font-size: 16px !important;
+            }
+            .progress-description {
+                font-size: 12px !important;
+                line-height: 1.3 !important;
+            }
+            .attempt-badge {
+                font-size: 10px !important;
+                padding: 4px 8px !important;
+            }
+
+            /* Section headers */
+            .section-header {
+                font-size: 18px !important;
+                padding: 12px 15px !important;
+                margin: 20px 0 15px 0 !important;
+            }
+
+            /* Level cards */
+            .level-card {
+                padding: 15px 10px !important;
+                height: 140px !important;
+            }
+            .level-card.compact {
+                height: 110px !important;
+                padding: 10px 8px !important;
+            }
+            .level-number {
+                font-size: 14px !important;
+                margin-bottom: 8px !important;
+            }
+            .level-status {
+                font-size: 11px !important;
+                margin-bottom: 8px !important;
+            }
+            .level-button {
+                padding: 6px 12px !important;
+                font-size: 12px !important;
+            }
+
+            /* Hints master (Level 4) */
+            .hints-master {
+                padding: 15px !important;
+                margin-bottom: 15px !important;
+            }
+            .hints-master-title {
+                font-size: 12px !important;
+                margin-bottom: 6px !important;
+            }
+            .hints-master-level {
+                font-size: 20px !important;
+                margin-bottom: 3px !important;
+            }
+            .hints-master-sub {
+                font-size: 11px !important;
+                margin-bottom: 15px !important;
+            }
+            .hint-card {
+                padding: 12px !important;
+            }
+            .hint-title {
+                font-size: 14px !important;
+                margin-bottom: 8px !important;
+            }
+            .hint-content {
+                font-size: 16px !important;
+                line-height: 1.5 !important;
+            }
+
+            /* Game content cards */
+            .phish-pair-card, .phish-link-card, .phish-attachment-card {
+                padding: 15px 12px !important;
+                margin-top: 10px !important;
+            }
+            .phish-pair-title, .phish-link-title, .phish-attachment-title {
+                font-size: 16px !important;
+                margin-bottom: 10px !important;
+            }
+
+            /* Email display */
+            .phish-email-display {
+                padding: 12px !important;
+                margin-bottom: 10px !important;
+            }
+            .phish-email-header {
+                flex-direction: column !important;
+                align-items: flex-start !important;
+                gap: 8px !important;
+                margin-bottom: 10px !important;
+            }
+            .phish-email-sender, .phish-email-subject {
+                font-size: 12px !important;
+            }
+            .phish-email-body {
+                font-size: 14px !important;
+                line-height: 1.4 !important;
+            }
+
+            /* URL display */
+            .phish-url-display {
+                padding: 12px !important;
+                margin-bottom: 10px !important;
+            }
+            .phish-url-content {
+                font-size: 16px !important;
+                line-height: 1.3 !important;
+            }
+
+            /* Feedback */
+            .phish-feedback-card {
+                padding: 15px !important;
+                margin-top: 10px !important;
+            }
+            .phish-feedback-title {
+                font-size: 14px !important;
+                margin-bottom: 8px !important;
+            }
+            .phish-feedback-body {
+                font-size: 13px !important;
+                line-height: 1.4 !important;
+            }
+            .phish-feedback-tip {
+                font-size: 12px !important;
+                margin-top: 8px !important;
+            }
+
+            /* Buttons */
+            div[data-testid="stHorizontalBlock"] > div > div > button {
+                padding: 12px 16px !important;
+                font-size: 14px !important;
+                margin: 4px !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            /* Extra small phones */
+            .phish-hud-header {
+                padding: 15px 10px !important;
+            }
+            .phish-title-main {
+                font-size: 20px !important;
+            }
+            .phish-hud-sub {
+                font-size: 12px !important;
+            }
+
+            .progress-card.compact {
+                padding: 10px 8px !important;
+            }
+            .progress-value {
+                font-size: 14px !important;
+            }
+            .progress-description {
+                font-size: 11px !important;
+            }
+
+            .level-card {
+                height: 120px !important;
+                padding: 12px 8px !important;
+            }
+            .level-card.compact {
+                height: 100px !important;
+                padding: 8px 6px !important;
+            }
+            .level-number {
+                font-size: 12px !important;
+            }
+            .level-status {
+                font-size: 10px !important;
+            }
+            .level-button {
+                padding: 4px 8px !important;
+                font-size: 10px !important;
+            }
+
+            .hints-master {
+                padding: 12px !important;
+            }
+            .hint-content {
+                font-size: 14px !important;
+            }
+
+            div[data-testid="stHorizontalBlock"] > div > div > button {
+                padding: 10px 12px !important;
+                font-size: 12px !important;
+            }
+        }
     </style>
     """
     st.markdown(cyber_css, unsafe_allow_html=True)
@@ -874,7 +1087,7 @@ def render_game() -> None:
     if "phishing_completed_messages" not in st.session_state:
         st.session_state.phishing_completed_messages = []
     if "phishing_game_mode" not in st.session_state:
-        st.session_state.phishing_game_mode = 1  # 1 = Sender Pairs, 2 = Link Detection, 3 = Attachment Detection, 4 = Message Detection
+        st.session_state.phishing_game_mode = 1  # 1 = Sender Detection, 2 = Link Detection, 3 = Attachment Detection, 4 = Message Detection
 
     pair_index = st.session_state.phishing_pair_index
     link_index = st.session_state.phishing_link_index
@@ -1072,64 +1285,111 @@ def render_game() -> None:
                 background: rgba(34, 211, 238, 0.16);
                 box-shadow: 0 0 18px rgba(34,211,238,.18);
             }
+
+        /* SLAM Letter Styling */
+        .progress-card .progress-label {
+            font-family: 'Orbitron', system-ui, sans-serif !important;
+            font-size: 2.5rem !important;
+            font-weight: 800 !important;
+            color: #22d3ee !important;
+            text-shadow: 0 0 15px rgba(34,211,238,.5) !important;
+            letter-spacing: 0.1em !important;
+            margin-bottom: 0.3rem !important;
+            text-transform: uppercase !important;
+        }
+
+        .progress-card.tier-primary .progress-label {
+            color: #a855f7 !important;
+            text-shadow: 0 0 20px rgba(168,85,247,.7) !important;
+        }
+
+        .progress-card.tier-secondary .progress-label {
+            color: #a855f7 !important;
+            text-shadow: 0 0 20px rgba(168,85,247,.7) !important;
+        }
+
+        /* Update subheader color to match letters */
+        .progress-card .progress-value {
+            color: #a855f7 !important;
+            text-shadow: 0 0 10px rgba(168,85,247,.5) !important;
+        }
+
+        /* Update level headers to match SLAM styling */
+        .section-header {
+            font-family: 'Orbitron', system-ui, sans-serif !important;
+            font-size: 24px !important;
+            color: #a855f7 !important;
+            text-shadow: 0 0 15px rgba(168,85,247,.6) !important;
+            letter-spacing: 0.05em !important;
+        }
+
+        /* Increase progress card size for better element accommodation */
+        .progress-card.compact {
+            padding: 20px 15px !important;
+            min-height: 160px !important;
+        }
         </style>
         <div class="phish-hud-header">
             <h1 class="phish-title-main glitch" data-text="PHISHING AWARENESS">🛡️ PHISHING AWARENESS</h1>
-            <p class="phish-hud-sub">Choose your path! Level 1: <strong>Legitimate senders</strong>. Level 2: <strong>Hover links</strong> to check destinations. Level 3: <strong>Analyze attachments</strong> for malware risks. First sublevel of each level is always unlocked!</p>
+            <p class="phish-hud-sub">You have a bunch of email fragments. You have to detect the legitimate one out of phishing attempts using SLAM methodology.</p>
         </div>
         """,
         unsafe_allow_html=True,
     )
 
-    # Game progress stats
-    col_p1, col_p2, col_p3 = st.columns(3)
+    # SLAM Methodology Cards
+    col_s, col_l, col_a, col_m = st.columns(4)
     
-    with col_p1:
+    with col_s:
         st.markdown(f"""
         <div class='progress-card compact tier-primary'>
-            <div class='progress-label'>CURRENT LEVEL</div>
-            <div class='progress-value'>{level_title}</div>
-            <div class='progress-description'>Progress: {len(completed_l1 | completed_l2 | completed_l3 | completed_l4)}/21 completed</div>
-            <div class='attempt-badge'>Challenge {current_level}/{6 if game_mode == 1 else 5 if game_mode == 2 else 5 if game_mode == 3 else 5}</div>
+            <div class='progress-label'>S</div>
+            <div class='progress-value'>SENDER</div>
+            <div class='progress-description'>Check sender's email address for typosquatting, domain spoofing, and unusual formatting</div>
         </div>
         """, unsafe_allow_html=True)
     
-    with col_p2:
-        st.markdown("""
-        <div class='progress-card compact tier-secondary'>
-            <div class='progress-label'>GAME RULES</div>
-            <div class='progress-value'>How to Play</div>
-            <div class='progress-description'>Choose any level! First sublevel of each level unlocked. Complete sublevels in order within each level.</div>
-            <div class='attempt-badge'>Free exploration</div>
-        </div>
-        """, unsafe_allow_html=True)
-    
-    with col_p3:
-        total_completed = len(completed_l1) + len(completed_l2) + len(completed_l3) + len(completed_l4)
-        if total_completed == 0:
-            status_text = "Not started"
-            status_color = "#94a3b8"
-        elif total_completed == 21:
-            status_text = "COMPLETE!"
-            status_color = "#22c55e"
-        else:
-            status_text = f"{total_completed}/21 Done"
-            status_color = "#60a5fa"
-        
+    with col_l:
         st.markdown(f"""
         <div class='progress-card compact tier-secondary'>
-            <div class='progress-label'>GAME STATUS</div>
-            <div class='progress-value' style='color: {status_color};'>{status_text}</div>
-            <div class='progress-description'>L1: {len(completed_l1)}/6 | L2: {len(completed_l2)}/5 | L3: {len(completed_l3)}/5 | L4: {len(completed_l4)}/5</div>
-            <div class='attempt-badge'>Keep going!</div>
+            <div class='progress-label'>L</div>
+            <div class='progress-value'>LINKS</div>
+            <div class='progress-description'>Hover over links to reveal actual URLs. Look for mismatched domains and suspicious redirects</div>
+        </div>
+        """, unsafe_allow_html=True)
+    
+    with col_a:
+        st.markdown(f"""
+        <div class='progress-card compact tier-secondary'>
+            <div class='progress-label'>A</div>
+            <div class='progress-value'>ATTACHMENTS</div>
+            <div class='progress-description'>Check file extensions, scan for malware, and verify attachment legitimacy before opening</div>
+        </div>
+        """, unsafe_allow_html=True)
+    
+    with col_m:
+        st.markdown(f"""
+        <div class='progress-card compact tier-secondary'>
+            <div class='progress-label'>M</div>
+            <div class='progress-value'>MESSAGES</div>
+            <div class='progress-description'>Analyze full message content for urgency tactics, payment requests, and authority impersonation</div>
         </div>
         """, unsafe_allow_html=True)
 
     st.write("")
     st.write("")
-
+    st.write("")
+    st.write("")
+    st.write("")
+    st.write("")
+    st.write("")
+    st.write("")
+    st.write("")
+    st.write("")
+    st.write("")
+    st.write("")
     # Level Navigation - Level 1
-    st.markdown('<div class="section-header">Level 1 - Email Sender Pairs</div>', unsafe_allow_html=True)
+    st.markdown('<div class="section-header">Level S: SENDER DETECTION</div>', unsafe_allow_html=True)
     
     level_cols_l1 = st.columns(6)
     for i, col in enumerate(level_cols_l1, start=1):
@@ -1285,9 +1545,19 @@ def render_game() -> None:
                 handle_choice_sender("B")
 
     st.markdown("<div style='height: 2.5rem;'></div>", unsafe_allow_html=True)
+    st.write("")
+    st.write("")
+    st.write("")
+    st.write("")
+    st.write("")
+    st.write("")
+    st.write("")
+    st.write("")
+    st.write("")
+    st.write("")
 
     # Level Navigation - Level 2
-    st.markdown('<div class="section-header">Level 2 - Link Detection</div>', unsafe_allow_html=True)
+    st.markdown('<div class="section-header">Level L - Link Detection</div>', unsafe_allow_html=True)
     
     st.markdown("<div style='height: 1rem;'></div>", unsafe_allow_html=True)
     
@@ -1452,9 +1722,18 @@ def render_game() -> None:
                 handle_choice_link("phishing")
 
     st.markdown("<div style='height: 2.5rem;'></div>", unsafe_allow_html=True)
-
+    st.write("")
+    st.write("")
+    st.write("")
+    st.write("")
+    st.write("")
+    st.write("")
+    st.write("")
+    st.write("")
+    st.write("")
+    st.write("")
     # Level Navigation - Level 3
-    st.markdown('<div class="section-header">Level 3 - Attachment Detection</div>', unsafe_allow_html=True)
+    st.markdown('<div class="section-header">Level A - Attachment Detection</div>', unsafe_allow_html=True)
     
     st.markdown("<div style='height: 1rem;'></div>", unsafe_allow_html=True)
     
@@ -1629,9 +1908,18 @@ def render_game() -> None:
                 handle_choice_attachment("phishing")
 
     st.markdown("<div style='height: 1.5rem;'></div>", unsafe_allow_html=True)
-
+    st.write("")
+    st.write("")
+    st.write("")
+    st.write("")
+    st.write("")
+    st.write("")
+    st.write("")
+    st.write("")
+    st.write("")
+    st.write("")
     # Level Navigation - Level 4
-    st.markdown('<div class="section-header">Level 4 - Message Detection</div>', unsafe_allow_html=True)
+    st.markdown('<div class="section-header">Level M - Message Detection</div>', unsafe_allow_html=True)
     
     st.markdown("<div style='height: 1rem;'></div>", unsafe_allow_html=True)
     

@@ -128,7 +128,7 @@ def render_landing_page() -> None:
 
         .hero-title {
             font-family: 'Orbitron', system-ui, sans-serif;
-            font-size: 4rem;
+            font-size: 5rem;
             font-weight: 700;
             color: var(--cyan);
             text-shadow: 0 0 20px rgba(34,211,238,.4);
@@ -164,19 +164,20 @@ def render_landing_page() -> None:
         }
 
         @keyframes glitch1 {
-            0%, 100% { clip-path: inset(0 0 0 0); transform: translate(-2px, -2px); }
-            20% { clip-path: inset(20% 0 30% 0); transform: translate(-3px, -2px); }
-            40% { clip-path: inset(50% 0 10% 0); transform: translate(1px, -3px); }
-            60% { clip-path: inset(10% 0 50% 0); transform: translate(-1px, 2px); }
-            80% { clip-path: inset(80% 0 5% 0); transform: translate(2px, 1px); }
+            0% { clip-path: inset(0 0 90% 0); transform: translate(-2px, -1px); }
+            18% { clip-path: inset(10% 0 60% 0); transform: translate(-3px, -2px); }
+            36% { clip-path: inset(35% 0 35% 0); transform: translate(1px, -3px); }
+            54% { clip-path: inset(60% 0 10% 0); transform: translate(-1px, 2px); }
+            72% { clip-path: inset(85% 0 5% 0); transform: translate(2px, 1px); }
+            100% { clip-path: inset(0 0 90% 0); transform: translate(-2px, -1px); }
         }
 
         @keyframes glitch2 {
-            0%, 100% { clip-path: inset(0 0 0 0); transform: translate(2px, 2px); }
-            20% { clip-path: inset(50% 0 20% 0); transform: translate(3px, 1px); }
-            40% { clip-path: inset(10% 0 60% 0); transform: translate(-2px, 3px); }
-            60% { clip-path: inset(40% 0 30% 0); transform: translate(2px, -2px); }
-            80% { clip-path: inset(70% 0 10% 0); transform: translate(-3px, -1px); }
+            0% { clip-path: inset(85% 0 5% 0); transform: translate(2px, 1px); }
+            22% { clip-path: inset(55% 0 20% 0); transform: translate(3px, 1px); }
+            44% { clip-path: inset(20% 0 55% 0); transform: translate(-2px, 3px); }
+            66% { clip-path: inset(5% 0 85% 0); transform: translate(2px, -2px); }
+            100% { clip-path: inset(85% 0 5% 0); transform: translate(2px, 1px); }
         }
 
         .hero-subtitle {
@@ -441,49 +442,50 @@ def render_landing_content():
                     <span class="stat-value">5</span>
                 </div>
                 <div class="stat-row">
-                    <span>Difficulty</span>
-                    <span class="stat-value">Beginner to Expert</span>
+                    <span>Focus</span>
+                    <span class="stat-value">Password/OSINT</span>
                 </div>
                 <div class="stat-row">
                     <span>Game Mode</span>
-                    <span class="stat-value">Single Player</span>
+                    <span class="stat-value">Attacker</span>
                 </div>
             </div>
         </div>
         """, unsafe_allow_html=True)
         
-        if st.button("🎮 PLAY NOW", key="play_game1", use_container_width=True):
+        if st.button("PLAY NOW", key="play_game1", use_container_width=True):
             st.session_state.current_page = 'game1'
             st.session_state.selected_game = 'game1'
             st.rerun()
     
     with col2:
         st.markdown("""
-        <div class="game-card coming-soon">
-            <div class="game-badge" style="background: #4a5568;">NEW MODE</div>
+        <div class="game-card">
+            <div class="game-badge">NEW</div>
             <div class="game-icon">🛡️</div>
             <div class="game-title">Phishing Awareness</div>
             <div class="game-description">
-                Learn to spot suspicious senders and typosquatted domains by picking the real sender from each pair.
+                Learn to spot suspicious senders, malicious links, dangerous attachments, and deceptive messages. 
+                Master 4 levels of comprehensive phishing detection skills.
             </div>
             <div class="game-stats">
                 <div class="stat-row">
                     <span>Levels</span>
-                    <span class="stat-value">6 pairs (Level 1)</span>
+                    <span class="stat-value">4 (SLAM)</span>
                 </div>
                 <div class="stat-row">
                     <span>Focus</span>
-                    <span class="stat-value">Phishing / OSINT</span>
+                    <span class="stat-value">Email Phishing</span>
                 </div>
                 <div class="stat-row">
-                    <span>Mode</span>
-                    <span class="stat-value">Awareness</span>
+                    <span>Game Mode</span>
+                    <span class="stat-value">Defensive</span>
                 </div>
             </div>
         </div>
         """, unsafe_allow_html=True)
 
-        if st.button("🎮 PLAY GAME 2", key="play_game2", use_container_width=True):
+        if st.button("PLAY NOW", key="play_game2", use_container_width=True):
             st.session_state.current_page = 'game2'
             st.session_state.selected_game = 'game2'
             st.rerun()

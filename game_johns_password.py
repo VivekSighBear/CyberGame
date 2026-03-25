@@ -1227,13 +1227,13 @@ def render_game() -> None:
                   <div class='hints-master-level'>LEVEL {st.session_state.current_level}</div>
                   <div class='hints-master-sub'>Social footprint analysis</div>
                   <div class='hints-grid'>
-                    <div class='hint-card primary' style='grid-column: 1 / span 2;'>
+                    <div class='hint-card primary' style='grid-column: 1 / -1;'>
                       <div class='hint-title'>{current_hints[0]['title']}</div>
                       <div class='hint-content' style='font-size: 18px; line-height: 1.75; font-weight: 650; text-align: left;'>
                         {level2_story_html}
                       </div>
                     </div>
-                    <div class='quote-card' style='grid-column: 3 / 4;'>
+                    <div class='quote-card' style='grid-column: 1 / -1;'>
                       <div class='quote-header'>
                         <div class='quote-avatar'></div>
                         <div class='quote-handle'>@johns_profile // captions</div>
@@ -1259,13 +1259,13 @@ def render_game() -> None:
                   <div class='hints-master-level'>LEVEL {st.session_state.current_level}</div>
                   <div class='hints-master-sub'>Timeline correlation</div>
                   <div class='hints-grid'>
-                    <div class='hint-card primary' style='grid-column: 1 / span 2;'>
+                    <div class='hint-card primary' style='grid-column: 1 / -1;'>
                       <div class='hint-title'>{current_hints[0]['title']}</div>
                       <div class='hint-content' style='font-size: 18px; line-height: 1.75; font-weight: 650; text-align: left;'>
                         {level3_story_html}
                       </div>
                     </div>
-                    <div class='quote-card' style='grid-column: 3 / 4;'>
+                    <div class='quote-card' style='grid-column: 1 / -1;'>
                       <div class='quote-header'>
                         <div class='quote-avatar'></div>
                         <div class='quote-handle'>@johns_profile // birthday post</div>
@@ -1289,13 +1289,13 @@ def render_game() -> None:
                   <div class='hints-master-level'>LEVEL {st.session_state.current_level}</div>
                   <div class='hints-master-sub'>Open-source intelligence</div>
                   <div class='hints-grid'>
-                    <div class='hint-card primary' style='grid-column: 1 / span 2;'>
+                    <div class='hint-card primary' style='grid-column: 1 / -1;'>
                       <div class='hint-title'>{current_hints[0]['title']}</div>
                       <div class='hint-content' style='font-size: 18px; line-height: 1.75; font-weight: 650; text-align: left;'>
                         {level4_story_html}
                       </div>
                     </div>
-                    <div class='quote-card' style='grid-column: 3 / 4;'>
+                    <div class='quote-card' style='grid-column: 1 / -1;'>
                       <div class='quote-header'>
                         <div class='quote-avatar'></div>
                         <div class='quote-handle'>@johns_profile // music post</div>
@@ -1319,13 +1319,13 @@ def render_game() -> None:
                   <div class='hints-master-level'>LEVEL {st.session_state.current_level}</div>
                   <div class='hints-master-sub'>Zero-signal challenge</div>
                   <div class='hints-grid'>
-                    <div class='hint-card primary' style='grid-column: 1 / span 2;'>
+                    <div class='hint-card primary' style='grid-column: 1 / -1;'>
                       <div class='hint-title'>{current_hints[0]['title']}</div>
                       <div class='hint-content' style='font-size: 18px; line-height: 1.75; font-weight: 650; text-align: left;'>
                         {level5_story_html}
                       </div>
                     </div>
-                    <div class='quote-card' style='grid-column: 3 / 4;'>
+                    <div class='quote-card' style='grid-column: 1 / -1;'>
                       <div class='quote-header'>
                         <div class='quote-avatar'></div>
                         <div class='quote-handle'>@johns_profile // security update</div>
